@@ -9,6 +9,17 @@ import Rate from "./Rate/Rate";
 import About from "./About/About";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showCookie: true };
+  }
+
+  toggleCookie = () => {
+    this.setState({
+      showCookie: false,
+    });
+  };
+
   render() {
     return (
       <div className="site">
@@ -22,14 +33,23 @@ class App extends React.Component {
           </main>
         </div>
 
-        <div className="container" id="cookie_info">
+        <div
+          className="container"
+          id="cookie_info"
+          style={{ display: this.state.showCookie ? "block" : "none" }}
+        >
           <div className="site-content">
             <div className="submit-content">
               On our website we use cookies to collect technical information.
               <br />
               In particular, for personalized operation of the site, we process
               the IP address of the region of your location.&nbsp;
-              <button className="btn btn-primary btn-sm">OK</button>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={this.toggleCookie}
+              >
+                OK
+              </button>
             </div>
           </div>
         </div>

@@ -26,7 +26,12 @@ class Calc extends React.Component {
 
           <div>
             <form onSubmit={this.calcRate}>
-              <input type="number" defaultValue={150} name="count-currency" />
+              <input
+                type="number"
+                step={0.01}
+                defaultValue={150}
+                name="count-currency"
+              />
               <select name="type-currency" id="">
                 {Object.keys(this.props.rate).map((keyName, i) => (
                   <option key={keyName} value={keyName}>
@@ -40,7 +45,7 @@ class Calc extends React.Component {
           <div>
             <h4>Result</h4>
             <ul className="calc-res">
-              <li>USD {this.state.result}</li>
+              <li>USD {this.state.result.toFixed(2)}</li>
             </ul>
           </div>
         </div>
